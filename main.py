@@ -16,7 +16,7 @@ def login(email, password):
 def send_email(recipient, num_emails_to_send, email, server):
     while num_emails_to_send != 0:
         try:
-            message = 'Subject: {}\n\n{}'.format("Hello from Python",
+            message = 'Subject: {}\n\n{}'.format("Hello from Python part {}".format(num_emails_to_send),
                                                  "I wrote this app to destroy you, this is the {}th email".format(
                                                      num_emails_to_send))
             server.sendmail(email, recipient, message)  # Send the email
@@ -28,7 +28,7 @@ def send_email(recipient, num_emails_to_send, email, server):
 
 if __name__ == '__main__':
 
-    username = input('\n'+"Username: ")
+    username = input('\n' + "Username: ")
     pword = getpass()
     send_to = input("Who do you want to email: ")
     if '@' not in send_to:
