@@ -7,6 +7,7 @@ def login(email, password):
         server = smtplib.SMTP('smtp.gmail.com', 587)  # Connect to the server
         server.starttls()  # Use TLS
         server.login(email, password)  # Login to the email server
+        print("login success")
         return server
     except smtplib.SMTPException:
         print('login error')
@@ -30,6 +31,7 @@ if __name__ == '__main__':
     run_again = True
     username = input("Username: ")
     pword = getpass()
+    email_server = login(username, pword)
     while run_again:
         send_to = input("Who do you want to email: ")
         if '@' not in send_to:
@@ -40,7 +42,6 @@ if __name__ == '__main__':
             print("That's too many emails!")
             exit()
         print("================================================" + "\n")
-        email_server = login(username, pword)
         send_email(send_to, num_emails, username, email_server)
         again = input("Want to send more emails? (y,n): ")
         if again != 'y':
